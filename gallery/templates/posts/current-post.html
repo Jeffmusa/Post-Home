@@ -2,4 +2,29 @@
 
 {% block content %}
 {{block.super}}
-{% endblock %}
+<div class="container">
+
+    <!-- Looping through news   -->
+    {% for upload in uploads %}
+  
+    <div class="row">
+      <!-- displaying News articles -->
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <h2 class="text-center"> {{ upload.name }} </h2>
+        
+        <img style="border-radius:20%; height:400px; width:400px;" src="{{upload.image.url}}" class="img-responsive" alt="Image">
+        <a href="/image/{{upload.id}}"><h2 class="text-center"> {{upload.name }} </h2></a>
+
+      </div>
+  
+    </div>
+  
+    {% empty %}
+    <div class="row">
+        <h2 class="text-center">NO UPLOADS FOR TODAY<img src="https://i.pinimg.com/originals/11/3f/60/113f60be580a09ef0027073423d98f0f.gif">NO UPLOADS FOR TODAY</h2>
+    </div>
+    {% endfor %}
+  
+  </div>
+  
+  {% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
+from .models import Image
 
 # Create your views here.
 def welcome(request):
@@ -11,8 +12,8 @@ def welcome(request):
 
 def uploads(request):
     date = dt.date.today()
-    
-    return render(request, 'posts/current-post.html', {"date": date,})
+    uploads = Image.uploads()
+    return render(request, 'posts/current-post.html', {"date": date,"uploads": uploads})
 
 def convert_dates(dates):
 
@@ -45,34 +46,33 @@ def past_uploads(request, past_date):
 
     if date == dt.date.today():
         return redirect(uploads)
-
-    return render(request, 'posts/post-history.html', {"date": date})
-
-
+    uploads = Image.all_uploads(date)
+    return render(request, 'posts/post-history.html', {"date": date,"uploads": uploads})
 
 
 
 
 
 
-# def past_uploads(request,past_date):
-#         # Converts data from the string Url
 
-#     try:
-#         # Converts data from the string Url
-#         date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
+def search_results(request):
 
-#     except ValueError:
-#         # Raise 404 error when ValueError is thrown
-#         raise Http404()
-    
+    if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images = Image.search_by_name(search_term)
+        message = f"{search_term}"
 
-#     day = convert_dates(date)
-#     html = f'''
-#         <html>
-#             <body>
-#                 <h1>Uploads for {day} {date.day}-{date.month}-{date.year}</h1>
-#             </body>
-#         </html>
-#             '''
-#     return HttpResponse(html)
+        return render(request, 'posts/search.html',{"message":message,"images": searched_images})
+
+    else:
+        message = "Please search for a valid item"
+        return render(request, 'posts/search.html',{"message":message})
+
+
+
+
+def image(request,image_id):
+   
+    image = Image.objects.filter(id = image_id)
+    return render(request,"posts/image.html", {"image":image})
+
