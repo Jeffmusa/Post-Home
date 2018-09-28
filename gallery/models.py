@@ -59,6 +59,9 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
+    def update_image(self):
+        self.update()
+
 
     @classmethod
     def uploads(cls):
@@ -67,12 +70,18 @@ class Image(models.Model):
         return uploads
 
     @classmethod
+    def home(cls):
+        uploads = cls.objects.all()
+        return uploads
+
+
+    @classmethod
     def all_uploads(cls,date):
         uploads = cls.objects.filter(pub_date__date = date)
         return uploads
 
     @classmethod
-    def search_by_name(cls,search_term):
+    def search_image(cls,search_term):
         uploads = cls.objects.filter(name__icontains=search_term)
         return uploads
        
