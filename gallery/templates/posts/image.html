@@ -1,5 +1,5 @@
 <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/materia/bootstrap.min.css" rel="stylesheet"> 
-
+<link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
 {%extends 'posts/base.html'%}
 
  {% block content %}
@@ -8,13 +8,13 @@
 
 
 
-<div class="container" style="text-align: center;">
+<div class="container" style="text-align: center; ">
     
    
     
-      <div class="container" style="background: url({{image.image.url}}) ;background-size:cover; height: 700px; width: 700px;">
+      <div class="container" style="background: url({{image.image.url}}) ;background-size:cover; height: 550px; width: 700px;">
   
-             <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal" style="margin-top:300px;">
+             <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal" style="margin-top:230px;">
 
                 <h1>   View Details</h1>
 
@@ -55,7 +55,7 @@
           
               <h3 class="text-center">Location: {{ image.location}} </h3>
             
-             <h4 class="text-center">Description: {{ image.description}} </h4>
+             <h4 class="text-center" style="font-family: 'Charmonman', cursive;">Description: <strong>{{ image.description}}</strong> </h4>
      
          
           <div class="modal-footer">
