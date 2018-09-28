@@ -13,6 +13,8 @@ def welcome(request):
 def uploads(request):
     date = dt.date.today()
     uploads = Image.uploads()
+    # category_id = Image.objects.filter(category_id='category_id')
+
     return render(request, 'posts/current-post.html', {"date": date,"uploads": uploads})
 
 def convert_dates(dates):
@@ -59,7 +61,7 @@ def search_results(request):
 
     if 'image' in request.GET and request.GET["image"]:
         search_term = request.GET.get("image")
-        searched_images = Image.search_by_name(search_term)
+        searched_images = Image.search_image(search_term)
         message = f"{search_term}"
 
         return render(request, 'posts/search.html',{"message":message,"images": searched_images})
@@ -74,5 +76,14 @@ def search_results(request):
 def image(request,image_id):
    
     image = Image.objects.filter(id = image_id)
+    for x in image:
+        print(x)
     return render(request,"posts/image.html", {"image":image})
+
+
+def all(request):
+   
+    al = Image.objects.all()
+
+    return render(request,"posts/all.html", {"al":al})
 

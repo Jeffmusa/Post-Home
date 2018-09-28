@@ -1,0 +1,32 @@
+{%extends 'posts/base.html'%}
+
+{% block content %}
+{{block.super}}
+
+<div class="row">
+      {% for image in al %}
+   <div class="col-md-3">     
+     <div class="card">
+        <div style="text-align:center" class="panel panel-secondary panel-footer"> 
+          <h3>{{image.name}}</h3>
+          
+          </div>
+      <a href="/image/{{image.id}}">
+        <img style=" height:300px; width:400px;" src="{{image.image.url}}" class="img-responsive" alt="Image">
+      
+        </a>
+        <div class="panel panel-secondary panel-footer">
+            <P>Location:{{image.location}}</P>
+     <small> <em> <strong> Posted {{image.pub_date|timesince}} ago.</strong></em></small>
+    </div>
+    </div> 
+      </div>
+    
+  
+ 
+    {% endfor %}
+  
+  </div>
+
+  
+  {% endblock %}

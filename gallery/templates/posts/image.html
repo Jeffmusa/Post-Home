@@ -1,25 +1,99 @@
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/materia/bootstrap.min.css" rel="stylesheet"> 
+
 {%extends 'posts/base.html'%}
 
  {% block content %}
 
- <div class="container">
+ {% for image in image %}
 
-   <div class="row">
-     <img src="{{upload.image.url}}"  class="img-responsive" alt="">
-   </div>
 
-   <div class="row">
-     <!-- <h1 class="text-center">{{article.title}}</h1> -->
-   </div>
 
-   <div class="row">
-    <h2 class="text-center"> {{ upload.name }} </h2>
-   </div>
+<div class="container" style="text-align: center;">
+    
+   
+    
+      <div class="container" style="background: url({{image.image.url}}) ;background-size:cover; height: 700px; width: 700px;">
+  
+             <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal" style="margin-top:300px;">
 
-   <div class="row">
-     <!-- <p>Posted {{article.pub_date|timesince}} by {{article.editor.first_name}}</p> -->
-   </div>
+                <h1>   View Details</h1>
 
- </div>
+            </button>
+          
+
+      
+      </div>
+        
+          <!-- <img src="{{image.image.url}}"  class="img-responsive" alt=""> -->
+        
+     
+       
+     
+       
+          <p>Posted {{image.pub_date|timesince}} ago.</p>
+     
+        </div>
+
+       
+     
+     
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+           
+          </div>
+
+          
+              <img src="{{image.image.url}}"  class="img-responsive" alt="" style="height:500px;width:700px;">
+          
+              <h2 class="text-center">Title:{{image.name}}</h2>
+          
+              <h3 class="text-center">Location: {{ image.location}} </h3>
+            
+             <h4 class="text-center">Description: {{ image.description}} </h4>
+     
+         
+          <div class="modal-footer">
+            <form >
+              <input class="form-control" type="text" id="link" value="http://127.0.0.1:8000{{image.image.url}}" >
+              <button  onclick="copyLink()"  class="btn btn-outline-primary" >Copy link</button>
+            </form>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+  <script>
+      function copyLink() {
+      /* Get the text field */
+      var copyText = document.getElementById( "link" );
+
+      /* Select the text field */
+      copyText.select();
+
+      /* Copy the text inside the text field */
+      document.execCommand( "copy" );
+
+      /* Alert the copied text */
+      alert( "Copied the link: " + copyText.value );
+    }
+  </script>
+
+{% endfor%}
+
+
+
+
+
+
+
 
  {% endblock %}
