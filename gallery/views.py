@@ -93,8 +93,9 @@ def image(request,image_id):
 
 
 def all(request):
+    date = dt.date.today()
    
     al = Image.objects.all()
 
-    return render(request,"posts/all.html", {"al":al})
+    return render(request,"posts/all.html", {"al":al, "date":date})
 
