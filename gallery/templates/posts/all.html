@@ -1,17 +1,30 @@
 {%extends 'posts/base.html'%}
 {% block content %}
 {{block.super}}
+<link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
 <div class="container"  >
 <div class="row">
+
+  
       {% for image in al %}
-   <div class="col-md-3">     
+     
+
+
+
+
+
+
+      
+   <div class="col-md-4">   
+       
      <div class="card">
         <div style="text-align:center ; " class="panel panel-secondary panel-footer" > 
-          <h3 style="font-family: 'Fontdiner Swanky', cursive;">{{image.name}}</h3>
-          
+            <strong> <h2 style="font-family: 'Tangerine', cursive;">{{image.name}}</h2></strong>
+
+           
           </div>
       <a href="/image/{{image.id}}">
-        <img style=" height:300px; width:400px;" src="{{image.image.url}}" class="img-responsive" alt="Image">
+        <img style=" height:300px; width:358px;" src="{{image.image.url}}" class="w3-border w3-padding" alt="Image">
       
         </a>
         <div class="panel panel-secondary panel-footer">
