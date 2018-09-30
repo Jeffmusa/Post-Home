@@ -1,4 +1,8 @@
+
+<link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+
 {%extends 'posts/base.html'%} 
+
 {% block content %}
 <div class="container">
 
@@ -13,16 +17,30 @@
 
   <div class="row">
 
-  {% if images %}
-    {% for image in images %}
-      <div class="col-sm-6 col-md-3">
-         
-         <a href="/image/{{image.id}}"><h2 class="text-center"> {{image.name }} </h2></a>
-          <img src="{{image.image.url}}" class="img-responsive" alt="Image">
+  {% for image in images %}
+  <div class="col-md-4">
+
+    <div class="card">
+      <div style="text-align:center ; " class="panel panel-secondary panel-footer">
+         <h1 style="font-family: 'Tangerine', cursive; color: rgba(0, 0, 0, .9)"><strong>{{image.name}}</strong></h1>
+
 
       </div>
-    {% endfor %}
-  {% endif %}
+      <a href="/image/{{image.id}}">
+        <img style=" height:300px; width:358px;" src="{{image.image.url}}" class="w3-border w3-padding" alt="Image">
+
+      </a>
+      <div class="panel panel-secondary panel-footer">
+        <P>Location:{{image.location}}</P>
+        <small> <em> <strong> Posted {{image.pub_date|timesince}} ago.</strong></em></small>
+      </div>
+    </div>
+  </div>
+
+
+
+  {% endfor %}
+  
   </div>
 </div>
 {% endblock %}
