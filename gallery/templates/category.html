@@ -1,0 +1,34 @@
+{%extends 'posts/base.html'%}
+
+{% block content %}
+{{block.super}}
+<div class="container">
+    <div class="row">
+    <!-- Looping through news   -->
+    {% for upload in category %}
+
+    
+  
+    
+      <!-- displaying News articles -->
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <h1 class="text-center" style="font-family: 'Chicle', cursive;">Location: {{ upload.location }} </h1>
+        <h3 class="text-center"> {{ upload.name }} </h3>
+        
+        <img style="border-radius:20%; height:400px; width:400px;" src="{{upload.image.url}}" class="img-responsive" alt="Image">
+        <a href="/image/{{upload.id}}"><h2 class="text-center"> {{upload.name }} </h2></a>
+
+      </div>
+  
+  
+    
+  
+    {% empty %}
+    <div class="row">
+        <h2 class="text-center">NO UPLOADS YET<img src="https://i.pinimg.com/originals/11/3f/60/113f60be580a09ef0027073423d98f0f.gif">NO UPLOADS YET</h2>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+  
+  {% endblock %}

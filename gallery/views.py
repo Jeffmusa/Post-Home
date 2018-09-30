@@ -59,9 +59,9 @@ def past_uploads(request, past_date):
 
 def search_results(request):
 
-    if 'image' in request.GET and request.GET["image"]:
-        search_term = request.GET.get("image")
-        searched_images = Image.search_image(search_term)
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
+        searched_images = Image.search_image_category(search_term)
         message = f"{search_term}"
 
         return render(request, 'posts/search.html',{"message":message,"images": searched_images})
@@ -69,6 +69,17 @@ def search_results(request):
     else:
         message = "Please search for a valid item"
         return render(request, 'posts/search.html',{"message":message})
+
+
+
+
+def locations(request,location_id):
+    location = Image.objects.filter(id=location_id)
+    return render(request,'location.html',{"location":location})
+
+def category(request,category):
+    category = Image.objects.filter(name=category)
+    return render(request,'category.html',{"category":category})
 
 
 
