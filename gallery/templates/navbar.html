@@ -8,18 +8,13 @@
 </head>
 
 <body >
-    <nav class="navbar navbar-fixed-top" style=" background-color: rgb(8, 4, 4); background: linear-gradient(rgb(11, 17, 10), rgba(0, 0, 0, 0.5)); padding: 15px;">
+    <nav class="navbar navbar-fixed-top" style=" background-color: rgb(8, 4, 4); background: linear-gradient(rgb(0, 0, 0), rgba(56, 56, 50, 0.5));; padding: 15px;">
   <!-- <nav class="navbar navbar-inverse" style="background-color:rgb(92, 92, 3);"> -->
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="{% url 'all' %}" style="color:rgb(250, 250, 250);"><span class="glyphicon glyphicon-home" ></span></a>
 
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="/location/3">Nairobi</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/location/2">Mombasa</a>
-        </li> -->
+   
 
       </div>
       <a class="navbar-brand" href="{% url 'uploadsToday' %}" style="color:rgb(250, 250, 250); "><span>Today's uploads</span></a>
@@ -46,12 +41,24 @@
     </div>
 
 
-
+    <div class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle" style="text-decoration:none;color:deepskyblue;font-size:15px ">Locations <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="/location/USA">US</a></li>
+            <li><a href="/location/China">China</a></li>
+            <li><a href="/location/Canada">Canada</a></li>
+            <li><a href="/location/Hawaii">Hawaii</a></li>
+            <li><a href="/location/Kenya">Kenya</a></li>
+            
+        </ul>
+    </div>
     
   </nav>
   <br>
   <br>
   <br>
+  <br>
+  
   
   
 </body>

@@ -21,11 +21,10 @@
   <div class="col-md-4">
 
     <div class="card">
-      <div style="text-align:center ; " class="panel panel-secondary panel-footer">
-         <h1 style="font-family: 'Tangerine', cursive; color: rgba(0, 0, 0, .9)"><strong>{{image.name}}</strong></h1>
+      
+          <a href="/location/{{image.location.name}}"> <h1 class="text-center" style="font-family: 'Chicle', cursive;">{{ image.location }} </h1></h2></a>
 
-
-      </div>
+        
       <a href="/image/{{image.id}}">
         <img style=" height:300px; width:358px;" src="{{image.image.url}}" class="w3-border w3-padding" alt="Image">
 

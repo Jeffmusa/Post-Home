@@ -12,11 +12,11 @@
     
       <!-- displaying News articles -->
       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <h1 class="text-center" style="font-family: 'Chicle', cursive;">Location: {{ upload.location }} </h1>
-        <h3 class="text-center"> {{ upload.name }} </h3>
-        
-        <img style="border-radius:20%; height:400px; width:400px;" src="{{upload.image.url}}" class="img-responsive" alt="Image">
-        <a href="/image/{{upload.id}}"><h2 class="text-center"> {{upload.name }} </h2></a>
+          <a href="/location/{{upload.location.name}}"> <h1 class="text-center" style="font-family: 'Chicle', cursive;">{{ upload.location }} </h1></h2></a>
+       
+          <a href="/image/{{upload.id}}">
+        <img style="border-radius:5%; height:400px; width:400px;" src="{{upload.image.url}}" class="img-responsive" alt="Image">
+     </a>
 
       </div>
   

@@ -3,60 +3,63 @@
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Irish+Grover" rel="stylesheet">
+
+<div id="carouselFade" class="carousel slide carousel-fade" data-ride="carousel" style="padding-bottom:70px;">
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <div class="carousel-caption">
+        <h1 class='text-center' style="font-family: 'Chicle', cursive; margin-bottom: 150px;">{{date|date:"l d-F Y"}}</h1>
+
+        <h3 style="font-family: 'Chicle', cursive; margin-bottom: 200px;">Home Post Albums</h3>
+
+        <p style="font-family: 'Irish Grover', cursive;">Home Post just took over.Take yout time and try to take over.</p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="carousel-caption">
+
+      </div>
+    </div>
+    <div class="item">
+      <div class="carousel-caption">
+        <h3 style="font-family: 'Chicle', cursive; margin-bottom: 150px;">JEFFREY LAMAR</h3>
+        <p style="font-family: 'Irish Grover', cursive;">Bon produit en place.Le développeur Jeff l'a fait </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carouselFade" role="button" data-slide="prev">
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carouselFade" role="button" data-slide="next">
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
 <div class="container">
   <div class="row">
-   <div id="carouselFade" class="carousel slide carousel-fade" data-ride="carousel" >
+      <i class="fa fa-chevron-down" aria-hidden="true"></i>
+{% for location in location %}
+<h1>{{location.name}}</h1>
 
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox" >
-        <div class="item active" >
-          <div class="carousel-caption">
-              <h1 class='text-center' style="font-family: 'Chicle', cursive; margin-bottom: 150px;">{{date|date:"l d-F Y"}}</h1>
-             
-            <h3 style="font-family: 'Chicle', cursive; margin-bottom: 200px;">Home Post Albums</h3>
-           
-            <p style="font-family: 'Irish Grover', cursive;">Home Post just took over.Take yout time and try to take over.</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="carousel-caption">
-            
-          </div>
-        </div>
-        <div class="item">
-          <div class="carousel-caption">
-            <h3 style="font-family: 'Chicle', cursive; margin-bottom: 150px;">JEFFREY  LAMAR</h3>
-            <p style="font-family: 'Irish Grover', cursive;">Bon produit en place.Le développeur Jeff l'a fait  </p>
-          </div>
-        </div>
-      </div>
 
-      <!-- Controls -->
-      <a class="left carousel-control" href="#carouselFade" role="button" data-slide="prev">
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#carouselFade" role="button" data-slide="next">
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-
+{% endfor %}
 
     {% for image in al %}
     <div class="col-md-4">
 
       <div class="card">
-        <div style="text-align:center ; " class="panel panel-secondary panel-footer">
-           <h1 style="font-family: 'Tangerine', cursive; color: rgba(0, 0, 0, .9)"><strong>{{image.name}}</strong></h1>
-
-
-        </div>
+       
         <a href="/image/{{image.id}}">
           <img style=" height:300px; width:358px;" src="{{image.image.url}}" class="w3-border w3-padding" alt="Image">
 
         </a>
-        <div class="panel panel-secondary panel-footer">
+        <div class="panel panel-secondary panel-footer" style="background: linear-gradient(rgb(34, 10, 27), rgba(0, 0, 0, 0.5));color:rgb(241, 234, 234)">
           <P>Location:{{image.location}}</P>
-          <small> <em> <strong> Posted {{image.pub_date|timesince}} ago.</strong></em></small>
+          <small> <em> <strong> Posted {{image.pub_date|timesince}} on <a href="/category/{{image.category.category_name}}">{{image.category}} category.</a> </strong></em></small>
         </div>
       </div>
     </div>
@@ -126,10 +129,7 @@
       font-size: 17px
     }
 
-    .carousel-caption h3 {
-      font-size: 30px;
-      font-family: 'Lato', sans-serif;
-    }
+    
 
     html,
     body,
@@ -156,7 +156,7 @@
     }
 
     .item:nth-child(3) {
-      background: url('http://127.0.0.1:8000/media/images/Beard.png');
+      background: url('http://www.photo-heart.com/web/photo/IMG_9510.JPG');
       background-size: cover;
       padding: 300px;
       background-position: center center;

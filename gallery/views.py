@@ -1,13 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
-from .models import Image
-
-# Create your views here.
-def welcome(request):
-    
-    return render(request, 'welcome.html')
-
+from .models import *
 
 
 def uploads(request):
@@ -35,21 +29,21 @@ def convert_dates(dates):
 
 
 
-def past_uploads(request, past_date):
+# def past_uploads(request, past_date):
 
-    try:
-        # Converts data from the string Url
-        date = dt.datetime.strptime(past_date, '%Y-%m-%d').date()
+#     try:
+#         # Converts data from the string Url
+#         date = dt.datetime.strptime(past_date, '%Y-%m-%d').date()
 
-    except ValueError:
-        # Raise 404 error when ValueError is thrown
-        raise Http404()
-        assert False
+#     except ValueError:
+#         # Raise 404 error when ValueError is thrown
+#         raise Http404()
+#         assert False
 
-    if date == dt.date.today():
-        return redirect(uploads)
-    uploads = Image.all_uploads(date)
-    return render(request, 'posts/post-history.html', {"date": date,"uploads": uploads})
+#     if date == dt.date.today():
+#         return redirect(date)
+#     uploads = Image.all_uploads(date)
+#     return render(request, 'posts/post-history.html', {"date": date,"uploads": uploads})
 
 
 
@@ -74,18 +68,22 @@ def search_results(request):
 
 
 def locations(request,location_id):
-    location = Image.objects.filter(id=location_id)
-    return render(request,'location.html',{"location":location})
+    loc = Location.objects.get(name=location_id)
+    location = Image.objects.filter(location=loc.id)
+    locat = Location.objects.all()
+    return render(request,'location.html',{"location":location,"locat":locat})
 
-def category(request,category):
-    category = Image.objects.filter(name=category)
-    return render(request,'category.html',{"category":category})
+def category(request,category_id):
+    cat = Category.objects.get(category_name=category_id)
+    category = Image.objects.filter(category=cat.id)
+    catego = Category.objects.all()
+    return render(request,'category.html',{"category":category,"catego":catego})
 
 
 
 
 def image(request,image_id):
-   
+    
     image = Image.objects.filter(id = image_id)
     for x in image:
         print(x)
@@ -94,8 +92,8 @@ def image(request,image_id):
 
 def all(request):
     date = dt.date.today()
-   
+    catego = Category.objects.all()
     al = Image.objects.all()
 
-    return render(request,"posts/all.html", {"al":al, "date":date})
+    return render(request,"posts/all.html", {"al":al, "date":date,"catego":catego})
 

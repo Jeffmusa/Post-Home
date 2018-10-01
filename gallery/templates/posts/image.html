@@ -24,13 +24,12 @@
       
       </div>
         
-          <!-- <img src="{{image.image.url}}"  class="img-responsive" alt=""> -->
         
      
-       
      
-       
-          <p>Posted {{image.pub_date|timesince}} ago.</p>
+      <p style="color:beige">Posted on: {{image.pub_date}}.</p>
+
+          <p style="color:beige">{{image.pub_date|timesince}} ago.</p>
      
         </div>
 
@@ -44,17 +43,23 @@
       
         <!-- Modal content-->
         <div class="modal-content">
+
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+              <h2 class="text-center">{{image.name}}</h2>
+
            
           </div>
 
           
               <img src="{{image.image.url}}"  class="img-responsive" alt="image coming soon" >
           
-              <h2 class="text-center">Title:{{image.name}}</h2>
+
+              <h3 class="text-center">Category: {{ image.category}} </h3>
+
           
               <h3 class="text-center">Location: {{ image.location}} </h3>
+              
             
              <h3 class="text-center" style="font-family: 'Loved by the King', cursive;">  <strong>Description:</strong>{{ image.description}} </h3>
      
@@ -63,6 +68,7 @@
             <form >
               <input class="form-control" type="text" id="link" value="http://127.0.0.1:8000{{image.image.url}}" >
               <button  onclick="copyLink()"  class="btn btn-outline-primary" >Copy link</button>
+              <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
             </form>
             
           </div>
