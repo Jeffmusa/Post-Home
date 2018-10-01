@@ -49,7 +49,7 @@ class Image(models.Model):
     name = models.CharField(max_length =30,null=True)
     description = models.TextField(null=True)
     location = models.ForeignKey(Location, null=True)
-    category = models.ManyToManyField(Category)
+    category = models.ForeignKey(Category, null=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to = 'images/')
 
@@ -81,7 +81,13 @@ class Image(models.Model):
         return uploads
 
     @classmethod
+    def filter_by_location(cls,location):
+        location = cls.objects.filter_by_location(location)
+        return location
+    
+
+    @classmethod
     def search_image_category(cls,search_term):
-        uploads = cls.objects.filter(name__icontains=search_term)
+        uploads = cls.objects.filter(category__category_name__icontains=search_term)
         return uploads
        

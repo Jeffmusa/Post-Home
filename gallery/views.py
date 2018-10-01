@@ -3,12 +3,6 @@ from django.http  import HttpResponse,Http404
 import datetime as dt
 from .models import Image
 
-# Create your views here.
-def welcome(request):
-    
-    return render(request, 'welcome.html')
-
-
 
 def uploads(request):
     date = dt.date.today()
@@ -35,21 +29,21 @@ def convert_dates(dates):
 
 
 
-def past_uploads(request, past_date):
+# def past_uploads(request, past_date):
 
-    try:
-        # Converts data from the string Url
-        date = dt.datetime.strptime(past_date, '%Y-%m-%d').date()
+#     try:
+#         # Converts data from the string Url
+#         date = dt.datetime.strptime(past_date, '%Y-%m-%d').date()
 
-    except ValueError:
-        # Raise 404 error when ValueError is thrown
-        raise Http404()
-        assert False
+#     except ValueError:
+#         # Raise 404 error when ValueError is thrown
+#         raise Http404()
+#         assert False
 
-    if date == dt.date.today():
-        return redirect(uploads)
-    uploads = Image.all_uploads(date)
-    return render(request, 'posts/post-history.html', {"date": date,"uploads": uploads})
+#     if date == dt.date.today():
+#         return redirect(date)
+#     uploads = Image.all_uploads(date)
+#     return render(request, 'posts/post-history.html', {"date": date,"uploads": uploads})
 
 
 
@@ -77,15 +71,15 @@ def locations(request,location_id):
     location = Image.objects.filter(id=location_id)
     return render(request,'location.html',{"location":location})
 
-def category(request,category):
-    category = Image.objects.filter(name=category)
+def category(request,category_id):
+    category = Image.objects.filter(name=category_id)
     return render(request,'category.html',{"category":category})
 
 
 
 
 def image(request,image_id):
-   
+    
     image = Image.objects.filter(id = image_id)
     for x in image:
         print(x)

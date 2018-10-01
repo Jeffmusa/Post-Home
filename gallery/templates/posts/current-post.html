@@ -4,7 +4,7 @@
 {{block.super}}
 <div class="container">
     <div class="row">
-        <h1 class='text-center' style="font-family: 'Chicle', cursive; ">{{date|date:"l d-F Y"}}</h1>
+        <h1 class='text-center' style="font-family: 'Chicle', cursive; color: deepskyblue">{{date|date:"l d-F Y"}}</h1>
 
        
     <!-- Looping through news   -->
@@ -15,11 +15,11 @@
       <!-- displaying News articles -->
       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 
-          <h1 class="text-center" style="font-family: 'Chicle', cursive;">Location: {{ upload.location }} </h1>
-        <h3 class="text-center"> {{ upload.name }} </h3>
-        
-        <img style="border-radius:20%; height:400px; width:400px;" src="{{upload.image.url}}" class="img-responsive" alt="Image">
-        <a href="/image/{{upload.id}}"><h2 class="text-center"> {{upload.name }} </h2></a>
+          <h1 class="text-center" style="font-family: 'Chicle', cursive;color: rgb(12, 169, 221)">Location: {{ upload.location }} </h1>
+        <h3 class="text-center" style="color: lightskyblue"> {{ upload.name }} </h3>
+        <a href="/image/{{upload.id}}">
+        <img style="border-radius:10%; height:400px; width:400px;" src="{{upload.image.url}}" class="img-responsive" alt="Image">
+       </a>
 
       </div>
   

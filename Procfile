@@ -1,0 +1,1 @@
+web: gunicorn JeffPostHome.wsgi
