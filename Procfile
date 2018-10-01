@@ -1,1 +1,1 @@
-web: gunicorn JeffPostHome.wsgi
+web: gunicorn posthome.wsgi

@@ -1,3 +1,4 @@
 /virtual
 /.vscode
 /db.sqlite3
+.env
