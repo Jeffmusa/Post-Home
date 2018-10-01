@@ -8,7 +8,7 @@
 
   <div class="row">
     {% if images%}
-      <h2>Found {{ images|length }} item of searched term {{message}}</h2>
+    <h1 class="text-center"  style="font-family: 'Chicle', cursive; color:khaki">{{message}} Category.</h1>
     {% else %}
       <h2> Found 0 images for the item you have searched for. {{message}}</h2>
     {% endif %}
@@ -22,7 +22,7 @@
 
     <div class="card">
       
-          <a href="/location/{{image.location.name}}"> <h1 class="text-center" style="font-family: 'Chicle', cursive;">{{ image.location }} </h1></h2></a>
+          <a href="/location/{{image.location.name}}"> <h2 class="text-center" style="font-family: 'Chicle', cursive;">{{ image.location }} </h2></a>
 
         
       <a href="/image/{{image.id}}">

@@ -42,11 +42,8 @@
 <div class="container">
   <div class="row">
       <i class="fa fa-chevron-down" aria-hidden="true"></i>
-{% for location in location %}
-<h1>{{location.name}}</h1>
+      <h3 style="color:aqua"><em> {{ al|length }} images</em></h3>
 
-
-{% endfor %}
 
     {% for image in al %}
     <div class="col-md-4">
