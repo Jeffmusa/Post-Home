@@ -31,11 +31,7 @@ class EditorTestClass(TestCase):
     def test_data(self):
         self.assertTrue(self.Jeff.first_name,"Jay")
 
-    # def test_update_editor(self):
-    #     self.Jeff.save_editor()
-    #     self.update_editor = Editor.objects.filter(first_name='Kim').update(first_name = 'Sam')
-    #     self.updated_editor = Editor.objects.get(first_name='Sam')
-    #     self.assertTrue(self.updated_editor.first_name,'Sam')
+
 
 class LocationTestClass(TestCase):
 
