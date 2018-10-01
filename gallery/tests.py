@@ -1,5 +1,7 @@
 from django.test import TestCase
 from .models import Editor,Category,Location,Image
+import datetime as dt
+
 
 # Create your tests here.
 
@@ -20,7 +22,20 @@ class EditorTestClass(TestCase):
         editors = Editor.objects.all()
         self.assertTrue(len(editors) > 0)
 
+    def test_delete(self):
+        post = Editor.objects.filter(id=1)
+        post.delete()
+        posts = Editor.objects.all()
+        self.assertTrue(len(posts)==0)
 
+    def test_data(self):
+        self.assertTrue(self.Jeff.first_name,"Jay")
+
+    # def test_update_editor(self):
+    #     self.Jeff.save_editor()
+    #     self.update_editor = Editor.objects.filter(first_name='Kim').update(first_name = 'Sam')
+    #     self.updated_editor = Editor.objects.get(first_name='Sam')
+    #     self.assertTrue(self.updated_editor.first_name,'Sam')
 
 class LocationTestClass(TestCase):
 
@@ -34,12 +49,33 @@ class LocationTestClass(TestCase):
         self.assertTrue(isinstance(self.Kenya,Location))
 
 
+
     def test_save_method(self):
         self.Kenya.save_location()
         locations = Location.objects.all()
         self.assertTrue(len(locations) > 0)
 
 
+    def test_update_location(self):
+        self.Kenya.save_location()
+        self.update_location = Location.objects.filter(name='Africa').update(name = 'Kenya')
+        self.updated_location = Location.objects.get(name='Kenya')
+        self.assertTrue(self.updated_location.name,'Kenya')
+
+
+    def test_delete(self):
+        location = Location.objects.filter(id=1)
+        location.delete()
+        area = Location.objects.all()
+        self.assertTrue(len(area)==0)
+
+    def test_get_location_by_id(self):
+        self.Kenya.save()
+        locale = Location.objects.get(id=1)
+        self.assertTrue(locale.name,'nairobi')
+    
+    def test_data(self):
+        self.assertTrue(self.Kenya.name,"nairobi")
 
 class ImageTestClass(TestCase):
 
@@ -57,20 +93,22 @@ class ImageTestClass(TestCase):
         images = Image.objects.all()
         self.assertTrue(len(images) > 0)
 
+    def test_data(self):
+        self.assertTrue(self.Img.name,"test")
 
-   
+    def test_delete(self):
+        post = Image.objects.filter(id=1)
+        post.delete()
+        posts = Image.objects.all()
+        self.assertTrue(len(posts)==0)
+
+    def test_get_post_by_id(self):
+        self.Img.save()
+        posts = Image.objects.get(id=1)
+        self.assertTrue(posts.name,'kol')
 
 
-def test_get_images_by_date(self):
-        test_date = '2017-03-17'
-        date = dt.datetime.strptime(test_date, '%Y-%m-%d').date()
-        images_by_date = Image.days_image(date)
-        self.assertTrue(len(images_by_date) == 0)
 
-
-def test_get_images_today(self):
-        today_images = Image.todays_images()
-        self.assertTrue(len(today_images)>0)
 
 
 
@@ -85,9 +123,29 @@ class CategoryTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.Fun,Category))
 
+    def test_data(self):
+        self.assertTrue(self.Fun.category_name,"tpm")
 
     def test_save_method(self):
         self.Fun.save_category()
         categorys = Category.objects.all()
         self.assertTrue(len(categorys) > 0)
+
+    def test_delete(self):
+        category = Category.objects.filter(id=1)
+        category.delete()
+        cat = Category.objects.all()
+        self.assertTrue(len(cat)==0)
+
+
+    def test_get_category_by_id(self):
+        self.Fun.save()
+        cat = Category.objects.get(id=1)
+        self.assertTrue(cat.category_name,'test')
+
+    # def test_update_category(self):
+    #     self.Fun.save()
+    #     self.update_cat = Category.objects.filter(category_name='hey').update(category_name = 'yoh')
+    #     self.updated_cat = Category.objects.get(category_name='yoh')
+    #     self.assertTrue(self.updated_cat.name,'yoh')
 
